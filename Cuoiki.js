@@ -67,13 +67,15 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   const authMobile = document.querySelector(".auth-mobile");
-  authMobile.addEventListener("click", (e) => {
-    if (e.target.textContent.includes("ĐĂNG NHẬP")) {
-      handleAuthClick('login');
-    } else if (e.target.textContent.includes("ĐĂNG KÝ")) {
-      handleAuthClick('register');
-    }
-  });
+  if (authMobile) {
+    authMobile.addEventListener("click", (e) => {
+      if (e.target.textContent.includes("ĐĂNG NHẬP")) {
+        handleAuthClick('login');
+      } else if (e.target.textContent.includes("ĐĂNG KÝ")) {
+        handleAuthClick('register');
+      }
+    });
+  }
 });
 
 let isModalOpen = false;
