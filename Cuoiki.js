@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Chuyển tab
   window.switchTab = function (tabId) {
+    if (isModalOpen) return; // Không cho chuyển tab khi modal mở
     const tabs = document.querySelectorAll(".tab-content");
     tabs.forEach(tab => tab.classList.remove("active"));
     const selectedTab = document.getElementById(tabId);
@@ -25,6 +26,9 @@ document.addEventListener("DOMContentLoaded", function () {
       banner.style.display = "none";
       phim.style.display = "none";
     }
+
+    // Tắt menu sau khi chuyển tab
+    document.querySelector(".menu").classList.remove("show");
   };
 
   // Hiển thị mặc định tab phim
@@ -56,14 +60,30 @@ document.addEventListener("DOMContentLoaded", function () {
   const auth = document.querySelector(".auth");
   auth.addEventListener("click", (e) => {
     if (e.target.textContent.includes("ĐĂNG NHẬP")) {
-      showLogin();
+      handleAuthClick('login');
     } else if (e.target.textContent.includes("ĐĂNG KÝ")) {
-      showRegister();
+      handleAuthClick('register');
+    }
+  });
+
+  const authMobile = document.querySelector(".auth-mobile");
+  authMobile.addEventListener("click", (e) => {
+    if (e.target.textContent.includes("ĐĂNG NHẬP")) {
+      handleAuthClick('login');
+    } else if (e.target.textContent.includes("ĐĂNG KÝ")) {
+      handleAuthClick('register');
     }
   });
 });
 
-// Chuyển giữa phim đang chiếu và phim sắp chiếu
+let isModalOpen = false;
+
+function toggleMenu() {
+  if (isModalOpen) return;
+  const menu = document.querySelector(".menu");
+  menu.classList.toggle("show");
+}
+
 function showMovies(type) {
   const now = document.getElementById("now-showing");
   const upcoming = document.getElementById("upcoming-movies");
@@ -78,71 +98,69 @@ function showMovies(type) {
   } else {
     now.style.display = "none";
     upcoming.style.display = "grid";
-    btnNow.classList.remove("active-btn");   // Dòng này quan trọng!
+    btnNow.classList.remove("active-btn");
     btnUpcoming.classList.add("active-btn");
   }
 }
 
-
-// Hiển thị form đăng nhập
 function showLogin() {
+  isModalOpen = true;
   document.getElementById("login-form").style.display = "flex";
   document.getElementById("register-form").style.display = "none";
+  document.querySelector(".menu").classList.remove("show");
 }
 
-// Hiển thị form đăng ký
 function showRegister() {
+  isModalOpen = true;
   document.getElementById("register-form").style.display = "flex";
   document.getElementById("login-form").style.display = "none";
+  document.querySelector(".menu").classList.remove("show");
 }
 
-// Đăng nhập
+function handleAuthClick(type) {
+  if (type === 'login') showLogin();
+  else showRegister();
+}
+
 function login() {
   const username = document.getElementById("login-username").value.trim();
   if (username) {
     localStorage.setItem("user", username);
     updateAuthUI();
+    closeModal();
   }
 }
 
-// Đăng ký
 function register() {
   const username = document.getElementById("register-username").value.trim();
   if (username) {
     localStorage.setItem("user", username);
     updateAuthUI();
+    closeModal();
   }
 }
 
-// Cập nhật UI sau khi đăng nhập
 function updateAuthUI() {
   const username = localStorage.getItem("user");
   const auth = document.querySelector(".auth");
+  const authMobile = document.querySelector(".auth-mobile");
 
   if (username) {
-    auth.innerHTML = `
-      <span>Xin chào, <strong>${username}</strong></span> / 
-      <a href="#" onclick="logout()">Đăng xuất</a>
-    `;
-    document.getElementById("login-form").style.display = "none";
-    document.getElementById("register-form").style.display = "none";
+    auth.innerHTML = `<span>Xin chào, <strong>${username}</strong></span> / <a href="#" onclick="logout()">Đăng xuất</a>`;
+    if (authMobile) {
+      authMobile.innerHTML = `<span>Xin chào, <strong>${username}</strong></span> / <a href="#" onclick="logout()">Đăng xuất</a>`;
+    }
+    closeModal();
   }
 }
 
-// Đăng xuất
 function logout() {
   localStorage.removeItem("user");
-  location.reload(); // hoặc gọi updateAuthUI();
+  location.reload();
 }
 
-// Đóng form đăng nhập/đăng ký
 function closeModal() {
+  isModalOpen = false;
   document.getElementById("login-form").style.display = "none";
   document.getElementById("register-form").style.display = "none";
 }
-
-function toggleMenu() {
-  const menu = document.querySelector(".menu");
-  menu.classList.toggle("show");
-}
-

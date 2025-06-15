@@ -534,14 +534,18 @@ a {
   width: 100%;
   box-sizing: border-box;
 }
+@media (max-width: 1366px) {
+  .main {
+    grid-template-columns: repeat(2, 1fr);
+    width: 90%;
+  }
+}
 
 @media (max-width: 768px) {
   .banner, #slideshow, .banner .slide-img {
     height: 250px;
   }
-}
 
-@media (max-width: 768px) {
   .button-container {
     flex-direction: column;
     gap: 10px;
@@ -551,12 +555,47 @@ a {
     width: 80%;
     font-size: 18px;
   }
-}
 
-@media (max-width: 1024px) {
-  .main {
-    grid-template-columns: repeat(2, 1fr);
-    width: 90%;
+  .end {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: auto;
+  }
+
+  .logo img {
+    width: 150px;
+    height: 150px;
+    margin: 20px 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background-color: #001026;
+    width: 100%;
+    text-align: center;
+    z-index: 1001;
+    padding: 20px 0;
+    gap: 20px;
+  }
+
+  .menu.show {
+    display: flex;
+  }
+
+  .auth {
+     display: block; /* hoặc flex nếu cần căn chỉnh */
+    text-align: center;
+    padding-top: 10px;
+    color: white;
   }
 }
 
@@ -574,66 +613,32 @@ a {
   .phim-box img {
     height: auto;
   }
-}
 
-@media (max-width: 768px) {
-  .end {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    height: auto;
-  }
-
-  .logo img {
-    width: 150px;
-    height: 150px;
-    margin: 20px 0;
+  .sector1 .uudai,
+  .sector2 .tintuc {
+    flex: 0 0 100%;
   }
 }
-.menu-toggle {
-  display: none;
-  font-size: 30px;
-  color: white;
-  cursor: pointer;
-}
 
-@media (max-width: 768px) {
-  .menu {
-    flex-direction: column;
-    background-color: #001026;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.4s ease;
-    z-index: 1001;
+  .auth-mobile {
+    display: none;
   }
 
-  .menu.show {
-    max-height: nones; /* đủ cao để hiển thị toàn bộ menu */
-  }
-
-  .menu li {
-    text-align: center;
-    padding: 12px 0;
-  }
-
-  .menu-toggle {
+  .desktop-only {
     display: block;
   }
 
-  .navbar {
-    flex-wrap: wrap;
-    position: relative;
+  @media (max-width: 768px) {
+    .auth-mobile {
+      display: block;
+      color: white;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .desktop-only {
+      display: none;
+    }
   }
-}
 
 
-@media (min-width: 1024px) {
-  .sector1 {
-    padding: 0px 30px 0px 30px;
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
