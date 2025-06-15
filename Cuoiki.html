@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DCinema</title>
+  <link rel="stylesheet" href="Cuoiki.css" />
+  <style>
+    .tab-content { display: none; }
+    .active { display: block; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Menu -->
+    <nav class="navbar">
+      <ul class="menu">
+        <li><a href="#" onclick="switchTab('lichchieu')">LỊCH CHIẾU</a></li>
+        <li><a href="#" onclick="switchTab('phim')">PHIM</a></li>
+        <li><a href="#" onclick="switchTab('uudai')">ƯU ĐÃI</a></li>
+        <li><a href="#" onclick="switchTab('tintuc')">TIN TỨC PHIM</a></li>
+      </ul>
+      <div class="auth">
+        <a href="#">ĐĂNG NHẬP</a> / <a href="#">ĐĂNG KÝ</a>
+      </div>
+    </nav>
+
+    <!-- Banner -->
+    <div id="banner-wrapper">
+      <div id="slideshow" class="banner">
+        <div class="slide-wrapper" id="slide-wrapper">
+          <img src="banner.png" class="slide-img" />
+          <img src="banner1.png" class="slide-img" />
+          <img src="banner2.png" class="slide-img" />
+          <img src="banner3.png" class="slide-img" />
+        </div>
+      </div>
+    </div>
+
+    <!-- PHIM tab -->
+    <div id="phim-wrapper" class="tab-content active">
+      <div class="important">
+        <div class="button-container">
+          <button class="btn btn-now">Phim đang chiếu</button>
+          <button class="btn btn-upcoming">Phim sắp chiếu</button>
+        </div>
+
+        <div class="main" id="now-showing">
+          <div class="phim-box"><img src="film1.png"><div class="overlay-top"></div><div class="overlay-bottom"></div><button class="btn-datve">Đặt vé</button></div>
+          <div class="phim-box"><img src="film2.png"><div class="overlay-top"></div><div class="overlay-bottom"></div><button class="btn-datve">Đặt vé</button></div>
+          <div class="phim-box"><img src="film3.png"><div class="overlay-top"></div><div class="overlay-bottom"></div><button class="btn-datve">Đặt vé</button></div>
+          <div class="phim-box"><img src="film4.png"><div class="overlay-top"></div><div class="overlay-bottom"></div><button class="btn-datve">Đặt vé</button></div>
+          <div class="phim-box"><img src="film5.png"><div class="overlay-top"></div><div class="overlay-bottom"></div><button class="btn-datve">Đặt vé</button></div>
+          <div class="phim-box"><img src="film6.png"><div class="overlay-top"></div><div class="overlay-bottom"></div><button class="btn-datve">Đặt vé</button></div>
+        </div>
+
+        <div class="main" id="upcoming-movies" style="display: none;">
+          <div class="phim-box"><img src="upcoming1.png"><div class="overlay-top"></div><div class="overlay-bottom"></div><button class="btn-datve">Đặt vé</button></div>
+          <div class="phim-box"><img src="upcoming2.png"><div class="overlay-top"></div><div class="overlay-bottom"></div><button class="btn-datve">Đặt vé</button></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LỊCH CHIẾU (bạn đã viết đầy đủ nên giữ nguyên) -->
+    <div id="lichchieu" class="tab-content lichchieuwrap">
+      <h2 style="text-align: center;">Chọn ngày chiếu</h2>
+      <div class="ngaychieulist">
+        <div class="ngay active" data-day="16"><div>Thứ 2</div><strong>16</strong></div>
+        <div class="ngay" data-day="17"><div>Thứ 3</div><strong>17</strong></div>
+        <div class="ngay" data-day="18"><div>Thứ 4</div><strong>18</strong></div>
+        <div class="ngay" data-day="19"><div>Thứ 5</div><strong>19</strong></div>
+        <div class="ngay" data-day="20"><div>Thứ 6</div><strong>20</strong></div>
+        <div class="ngay" data-day="21"><div>Thứ 7</div><strong>21</strong></div>
+        <div class="ngay" data-day="22"><div>Chủ nhật</div><strong>22</strong></div>
+      </div>
+      <h3>Chọn lịch chiếu</h3>
+      <!-- Lịch chiếu ngày 16 -->
+    <div class="lichchieu-ngay" data-day="16">
+        <div class="lichchieuitem">
+            <div class="poster">
+                <img src="film1.png" alt="phim1">
+            </div>
+        <div class="thongtin">
+            <h4>Thám tử Kiên</h4>
+            <div class="suatchieu-list">
+                <div class="suatchieu">21:45–23:51<br><small>Phòng 05</small></div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+  <!-- Lịch chiếu ngày 17 -->
+    <div class="lichchieu-ngay" data-day="17" style="display: none;">
+        <div class="lichchieuitem">
+            <div class="poster">
+                <img src="film2.png" alt="Phim 2">
+            </div>
+            <div class="thongtin">
+                <h4>Lật mặt 8: Vòng tay nắng</h4>
+            <div class="suatchieu-list">
+                <div class="suatchieu">22:00–23:59<br><small>Phòng 04</small></div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Lich chieu 18-->
+
+    <div class="lichchieu-ngay" data-day="18" style="display: none;">
+        <div class="lichchieuitem">
+            <div class="poster">
+            <img src="film3.png" alt="phim1">
+            </div>
+            <div class="thongtin">
+                <h4>Đội săn quỷ</h4>
+                <div class="suatchieu-list">
+                <div class="suatchieu">7:00–8:30<br><small>Phòng 06</small></div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!--Lich chieu 19-->
+    <div class="lichchieu-ngay" data-day="19" style="display: none;">
+        <div class="lichchieuitem">
+            <div class="poster">
+            <img src="film5.png" alt="phim1">
+            </div>
+            <div class="thongtin">
+                <h4>Until dawn-Bí mật kinh hoàng</h4>
+                <div class="suatchieu-list">
+                <div class="suatchieu">10:00–10:30<br><small>Phòng 01</small></div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Lich chieu 20-->
+    <div class="lichchieu-ngay" data-day="20" style="display: none;">
+        <div class="lichchieuitem">
+            <div class="poster">
+            <img src="film4.png" alt="phim1">
+            </div>
+            <div class="thongtin">
+                <h4>Tội đồ</h4>
+                <div class="suatchieu-list">
+                <div class="suatchieu">14:30-16:00<br><small>Phòng 08</small></div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Lich chieu 21-->
+
+    <div class="lichchieu-ngay" data-day="21" style="display: none;">
+        <div class="lichchieuitem">
+            <div class="poster">
+            <img src="film6.png" alt="phim1">
+            </div>
+            <div class="thongtin">
+                <h4>Ba mặt lật kèo</h4>
+                <div class="suatchieu-list">
+                <div class="suatchieu">15:30-17:00<br><small>Phòng 03</small></div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Lich chieu 22-->
+    <div class="lichchieu-ngay" data-day="22">
+        <div class="lichchieuitem">
+            <div class="poster">
+                <img src="film1.png" alt="phim1">
+            </div>
+        <div class="thongtin">
+            <h4>Thám tử Kiên</h4>
+            <div class="suatchieu-list">
+                <div class="suatchieu">21:45–23:51<br><small>Phòng 05</small></div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <div id="uudai" class="tab-content"></div>
+    <div id="tintuc" class="tab-content"></div>
+
+    <div class="end">
+      <div>
+        <h4>Tên Doanh Nghiệp: Công Ty TNHH DCinema.</h4>
+        <h4>Giấy CNĐKKD: 0400668112 - Ngày cấp: 05/11/2025.</h4>
+        <h4>Cơ quan cấp: Sở KH&ĐT TP Đà Nẵng</h4>
+        <h4>Địa chỉ: 22 đường 2/9, Q.Hải Châu, Đà Nẵng</h4>
+        <h4>Điện thoại: 0236 3630 689</h4>
+      </div>
+      <div class="logo">
+        <img src="logo-removebg-preview.png" alt="logo">
+      </div>
+    </div>
+  </div>
+
+  <!-- Kết nối JS -->
+  <script src="Cuoiki.js"></script>
+
+  <!-- Thêm JS chuyển phim -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const btnNow = document.querySelector(".btn-now");
+      const btnUpcoming = document.querySelector(".btn-upcoming");
+      const mainNow = document.getElementById("now-showing");
+      const mainUpcoming = document.getElementById("upcoming-movies");
+
+      btnNow.addEventListener("click", () => {
+        mainNow.style.display = "grid";
+        mainUpcoming.style.display = "none";
+      });
+
+      btnUpcoming.addEventListener("click", () => {
+        mainNow.style.display = "none";
+        mainUpcoming.style.display = "grid";
+      });
+    });
+  </script>
+</body>
+</html>

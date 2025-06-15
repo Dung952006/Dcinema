@@ -1,0 +1,340 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: #001026;
+  color: white;
+  border-top: 1px solid white;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  list-style: none;
+  gap: 100px;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.menu li a:hover {
+  color: #f6ad40;
+}
+
+.auth {
+  flex-shrink: 0;
+}
+
+.auth a {
+  color: #718096;
+  text-decoration: none;
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+.auth a:hover {
+  color: white;
+}
+
+#slideshow {
+  height: 450px;
+  overflow: hidden;
+}
+
+.banner {
+  height: 450px;
+  border: 1px solid white;
+}
+
+.banner .slide-img {
+  width: 100vw;
+  height: 480px;
+  flex-shrink: 0;
+}
+
+.fade-slide {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.slide-wrapper {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100vw;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin: 0 0;
+}
+
+.btn {
+  padding: 15px 30px;
+  border-radius: 40px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s;
+  margin: 10px;
+}
+
+.btn-now {
+  background-color: #ff4f00;
+  color: white;
+  margin-top: 40px;
+}
+
+.btn-upcoming {
+  background-color: white;
+  color: #f25400;
+  border: 2px solid #f25400;
+  margin-top: 40px;
+}
+
+.btn-upcoming:hover {
+  background-color: #f25400;
+  color: white;
+}
+
+.important {
+  background: linear-gradient(to right, #5e8266, #44365a);
+  border: 1px solid white;
+}
+
+.main {
+  width: 1000px;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  margin: 30px auto;
+}
+
+.phim-box {
+  position: relative;
+  width: 280px;
+  height: 400px;
+  overflow: hidden;
+  border: 2px solid black;
+  cursor: pointer;
+  margin: 15px;
+  border-radius: 5%;
+}
+
+.phim-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Lớp đen trượt từ TRÊN xuống */
+.overlay-top,
+.overlay-bottom {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  background-color: rgba(0, 0, 0, 0.514);
+  transition: transform 0.4s ease;
+  z-index: 1;
+}
+
+.overlay-top {
+  top: 0;
+  transform: translateY(-100%);
+}
+
+.overlay-bottom {
+  bottom: 0;
+  transform: translateY(100%);
+}
+
+/* Nút đặt vé ở giữa */
+.btn-datve {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  padding: 10px 20px;
+  background-color: #ff4f00;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Hover thì 2 lớp đen trượt vào giữa + hiện nút */
+.phim-box:hover .overlay-top {
+  transform: translateY(0);
+}
+
+.phim-box:hover .overlay-bottom {
+  transform: translateY(0);
+}
+
+.phim-box:hover .btn-datve {
+  opacity: 1;
+}
+
+.end {
+  background-color: rgb(61, 22, 159);
+  width: 100%;
+  height: 300px;
+  padding: 30px;
+  display: flex;
+  border: 1px solid white;
+  margin-top: auto;
+}
+
+h4 {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 10px;
+}
+
+.logo img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  margin-left: 150px;
+}
+
+
+html, body {
+  height: 100%;
+}
+
+.container {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.tab-content {
+  flex: 1;
+}
+
+.lichchieuwrap {
+  padding: 20px;
+  background-color: white;
+  flex:1;
+}
+
+.ngaychieulist {
+  display: flex;
+  justify-content: space-around;
+  background: #fcf9f2;
+  padding: 20px 0;
+  margin-bottom: 40px;
+  border-top: 2px solid #f25c05;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.ngay {
+  text-align: center;
+  font-weight: bold;
+}
+
+.ngay strong {
+  display: inline-block;
+  font-size: 20px;
+  margin-top: 5px;
+  padding: 10px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.ngay.active strong {
+  background-color: #f25c05;
+  color: white;
+}
+.ngay strong:hover {
+  background-color: #f25c05;
+  color: white;
+  cursor: pointer;
+}
+
+.lichchieuitem {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.poster img {
+  width: 120px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.thongtin {
+  flex: 1;
+}
+
+.thongtin h4 {
+  margin: 0 0 15px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #222;
+}
+
+.suatchieu-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.suatchieu {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+  font-size: 14px;
+  text-align: center;
+  min-width: 100px;
+  transition: all 0.3s ease;
+}
+
+.suatchieu:hover {
+  background-color: #ff4f00;
+  color:white;
+  cursor: pointer;
+  transform: translateY(-4px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.active-btn {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transform: scale(1.05);
+  transition: 0.3s ease;
+}
