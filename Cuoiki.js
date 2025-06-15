@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     slideWrapper.style.transform = `translateX(-${index * 100}%)`;
   }, 4000);
 
+  // Chuyển tab
   window.switchTab = function (tabId) {
     const tabs = document.querySelectorAll(".tab-content");
     tabs.forEach(tab => tab.classList.remove("active"));
@@ -26,36 +27,46 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
+  // Hiển thị mặc định tab phim
   window.switchTab('phim');
-});
 
-document.addEventListener("DOMContentLoaded", function () {
+  // Chọn ngày trong lịch chiếu
   const ngayList = document.querySelectorAll('.ngay');
   const lichList = document.querySelectorAll('.lichchieu-ngay');
 
   ngayList.forEach(item => {
     item.addEventListener('click', function () {
-      // Bỏ active tất cả
       ngayList.forEach(i => i.classList.remove('active'));
       this.classList.add('active');
 
       const selectedDay = this.getAttribute('data-day');
 
-      // Ẩn tất cả lịch chiếu
       lichList.forEach(lich => {
         lich.style.display = 'none';
       });
 
-      // Hiện lịch chiếu tương ứng
       const activeLich = document.querySelector(`.lichchieu-ngay[data-day="${selectedDay}"]`);
       if (activeLich) activeLich.style.display = 'block';
     });
   });
+
+  // Cập nhật tên người dùng khi đăng nhập / đăng ký
+  updateAuthUI();
+
+  const auth = document.querySelector(".auth");
+  auth.addEventListener("click", (e) => {
+    if (e.target.textContent.includes("ĐĂNG NHẬP")) {
+      showLogin();
+    } else if (e.target.textContent.includes("ĐĂNG KÝ")) {
+      showRegister();
+    }
+  });
 });
 
+// Chuyển giữa phim đang chiếu và phim sắp chiếu
 function showMovies(type) {
-  const now = document.getElementById("movie-now");
-  const upcoming = document.getElementById("movie-upcoming");
+  const now = document.getElementById("now-showing");
+  const upcoming = document.getElementById("upcoming-movies");
   const btnNow = document.querySelector(".btn-now");
   const btnUpcoming = document.querySelector(".btn-upcoming");
 
@@ -67,7 +78,71 @@ function showMovies(type) {
   } else {
     now.style.display = "none";
     upcoming.style.display = "grid";
-    btnNow.classList.remove("active-btn");
+    btnNow.classList.remove("active-btn");   // Dòng này quan trọng!
     btnUpcoming.classList.add("active-btn");
   }
 }
+
+
+// Hiển thị form đăng nhập
+function showLogin() {
+  document.getElementById("login-form").style.display = "flex";
+  document.getElementById("register-form").style.display = "none";
+}
+
+// Hiển thị form đăng ký
+function showRegister() {
+  document.getElementById("register-form").style.display = "flex";
+  document.getElementById("login-form").style.display = "none";
+}
+
+// Đăng nhập
+function login() {
+  const username = document.getElementById("login-username").value.trim();
+  if (username) {
+    localStorage.setItem("user", username);
+    updateAuthUI();
+  }
+}
+
+// Đăng ký
+function register() {
+  const username = document.getElementById("register-username").value.trim();
+  if (username) {
+    localStorage.setItem("user", username);
+    updateAuthUI();
+  }
+}
+
+// Cập nhật UI sau khi đăng nhập
+function updateAuthUI() {
+  const username = localStorage.getItem("user");
+  const auth = document.querySelector(".auth");
+
+  if (username) {
+    auth.innerHTML = `
+      <span>Xin chào, <strong>${username}</strong></span> / 
+      <a href="#" onclick="logout()">Đăng xuất</a>
+    `;
+    document.getElementById("login-form").style.display = "none";
+    document.getElementById("register-form").style.display = "none";
+  }
+}
+
+// Đăng xuất
+function logout() {
+  localStorage.removeItem("user");
+  location.reload(); // hoặc gọi updateAuthUI();
+}
+
+// Đóng form đăng nhập/đăng ký
+function closeModal() {
+  document.getElementById("login-form").style.display = "none";
+  document.getElementById("register-form").style.display = "none";
+}
+
+function toggleMenu() {
+  const menu = document.querySelector(".menu");
+  menu.classList.toggle("show");
+}
+
