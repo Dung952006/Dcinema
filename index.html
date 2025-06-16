@@ -12,25 +12,18 @@
 </head>
 <body>
   <div class="container">
-    <!-- Menu -->
    <nav class="navbar">
-  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
-  <ul class="menu">
-    <li><a href="#" onclick="switchTab('lichchieu')">LỊCH CHIẾU</a></li>
-    <li><a href="#" onclick="switchTab('phim')">PHIM</a></li>
-    <li><a href="#" onclick="switchTab('uudai')">ƯU ĐÃI</a></li>
-    <li><a href="#" onclick="switchTab('tintuc')">TIN TỨC PHIM</a></li>
-    <li class="auth-mobile">
-      <a href="#">ĐĂNG NHẬP</a> / <a href="#">ĐĂNG KÝ</a>
-    </li>
-  </ul>
-  <div class="auth desktop-only">
-    <a href="#">ĐĂNG NHẬP</a> / <a href="#">ĐĂNG KÝ</a>
-  </div>
-</nav>
-
-    <!-- Banner -->
+       <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+       <ul class="menu">
+            <li><a href="#" onclick="switchTab('lichchieu')">LỊCH CHIẾU</a></li>
+            <li><a href="#" onclick="switchTab('phim')">PHIM</a></li>
+            <li><a href="#" onclick="switchTab('uudai')">ƯU ĐÃI</a></li>
+            <li><a href="#" onclick="switchTab('tintuc')">TIN TỨC PHIM</a></li>
+            <li class="auth-mobile"><a href="#">ĐĂNG NHẬP</a> / <a href="#">ĐĂNG KÝ</a></li>
+        </ul>
+            <div class="auth desktop-only"><a href="#">ĐĂNG NHẬP</a> / <a href="#">ĐĂNG KÝ</a></div>
+    </nav>
+    
     <div id="banner-wrapper">
       <div id="slideshow" class="banner">
         <div class="slide-wrapper" id="slide-wrapper">
@@ -42,7 +35,7 @@
       </div>
     </div>
 
-    <!-- PHIM tab -->
+    
     <div id="phim-wrapper" class="tab-content active">
       <div class="important">
         <div class="button-container">
@@ -68,7 +61,7 @@
       </div>
     </div>
 
-    <!-- LỊCH CHIẾU (bạn đã viết đầy đủ nên giữ nguyên) -->
+   
     <div id="lichchieu" class="tab-content lichchieuwrap">
       <h2 style="text-align: center;">Chọn ngày chiếu</h2>
       <div class="ngaychieulist">
