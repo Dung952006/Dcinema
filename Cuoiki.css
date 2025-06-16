@@ -37,7 +37,7 @@ body {
 }
 
 .auth {
-  flex-shrink: 0; /* khong bi co lai*/
+  flex-shrink: 0;
 }
 
 .auth a {
@@ -158,7 +158,7 @@ body {
   display: block;
 }
 
-/* Lớp đen trượt từ TRÊN xuống */
+
 .overlay-top,
 .overlay-bottom {
   position: absolute;
@@ -179,7 +179,7 @@ body {
   transform: translateY(100%);
 }
 
-/* Nút đặt vé ở giữa */
+
 .btn-datve {
   position: absolute;
   top: 50%;
@@ -197,7 +197,6 @@ body {
   transition: opacity 0.3s ease;
 }
 
-/* Hover thì 2 lớp đen trượt vào giữa + hiện nút */
 .phim-box:hover .overlay-top {
   transform: translateY(0);
 }
@@ -534,6 +533,16 @@ a {
   width: 100%;
   box-sizing: border-box;
 }
+
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: white;
+  z-index: 1100;
+  position: relative;
+}
+
 @media (max-width: 1366px) {
   .main {
     grid-template-columns: repeat(2, 1fr);
@@ -595,7 +604,7 @@ a {
   }
 
   .auth {
-     display: block; /* hoặc flex nếu cần căn chỉnh */
+     display: block; 
     text-align: center;
     padding-top: 10px;
     color: white;
@@ -643,5 +652,3 @@ a {
       display: none;
     }
   }
-
-

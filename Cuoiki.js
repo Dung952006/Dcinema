@@ -8,9 +8,9 @@ document.addEventListener("DOMContentLoaded", function () {
     slideWrapper.style.transform = `translateX(-${index * 100}%)`;
   }, 4000);
 
-  // Chuyển tab
+
   window.switchTab = function (tabId) {
-    if (isModalOpen) return; // Không cho chuyển tab khi modal mở
+    if (isModalOpen) return;
     const tabs = document.querySelectorAll(".tab-content");
     tabs.forEach(tab => tab.classList.remove("active"));
     const selectedTab = document.getElementById(tabId);
@@ -27,14 +27,12 @@ document.addEventListener("DOMContentLoaded", function () {
       phim.style.display = "none";
     }
 
-    // Tắt menu sau khi chuyển tab
     document.querySelector(".menu").classList.remove("show");
   };
 
-  // Hiển thị mặc định tab phim
   window.switchTab('phim');
 
-  // Chọn ngày trong lịch chiếu
+
   const ngayList = document.querySelectorAll('.ngay');
   const lichList = document.querySelectorAll('.lichchieu-ngay');
 
@@ -54,7 +52,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Cập nhật tên người dùng khi đăng nhập / đăng ký
   updateAuthUI();
 
   const auth = document.querySelector(".auth");
